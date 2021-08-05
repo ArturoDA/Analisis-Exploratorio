@@ -1,0 +1,83 @@
+---
+title: "Analisis exploratorio"
+author: "Arturo Díaz"
+date: "5/8/2021"
+output:
+  html_document: default
+  word_document: default
+---
+<!-- Comentario: Ctrl + Shift + c-->
+# Cargar Librerias
+Utilizamos las siguientes librerias:
+
+  * ggplot2
+  * dplyr
+  * tidyr
+
+```{r librerias, message=F, warning=FALSE}
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+```
+
+## Media, Mediana y Desviacion Estandar
+Se realiza una prueba con las funciones basicas de R
+
+<!--Sección de código: Ctrl + Alt + i -->
+```{r Descriptivos, include=T}
+m1 <- c(21,30,29,30,27,29)
+m2 <- c(21,30,29,30,27,70)
+
+mean(m1); mean(m2)
+median(m1); median(m2)
+
+sd(m1); sd(m2)
+range(m1)
+```
+## Coeficiente de variación
+El coeficiente de variacion es la desviacion estandar `sd` dividido por la media `mean`
+
+```{r coef_var, include=T}
+edad <- c(21,34,10,15,37)
+estatura <- c(1.8, 1.7,1.5,1.4,1.7)*100
+
+sd(edad)/mean(edad)
+sd(estatura)/mean(estatura)
+```
+## Practica de graficos en R
+Utilizamos las funciones basicas de R y algunas bases de datos como **airquality**, realizamos ***histogramas*** y *diagramas de dispersion*. Tambien utilizamos el poderoso paquete ggplot2 <https://ggplot2.tidyverse.org/>
+
+El siguiente es un grafico en `ggplot2`
+
+```{r graficos, fig.cap="Histograma de ozono", warning=FALSE, message=FALSE, echo=FALSE}
+airquality %>% ggplot(aes(x=Ozone)) +
+  geom_histogram(fill="white", colour="black") +
+  theme_bw()
+```
+
+elevar^2^
+minimizar~2~
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
